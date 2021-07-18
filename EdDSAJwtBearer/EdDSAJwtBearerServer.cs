@@ -21,5 +21,20 @@ namespace EdDSAJwtBearer
         }
 
 
+        public string CreateToken(
+            IEnumerable<Claim> claims,
+            string[] roles,
+            DateTime expires
+            )
+        {
+            return EdDSATokenHandler.CreateToken(
+                EdDSAJwtBearerServerOptions.PrivateSigningKey,
+                EdDSAJwtBearerServerOptions.Issuer,
+                EdDSAJwtBearerServerOptions.Audience,
+                claims,
+                roles,
+                expires);
+        }
+
     }
 }
