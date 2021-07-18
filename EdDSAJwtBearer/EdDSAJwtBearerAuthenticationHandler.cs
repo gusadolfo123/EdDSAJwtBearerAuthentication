@@ -191,5 +191,15 @@ namespace EdDSAJwtBearer
 
             return IsValid;
         }
+
+        protected override async Task HandleChallengeAsync(AuthenticationProperties properties)
+        {
+            // Indica al cliente que se requiere el método de autenticación Bearer.
+            Response.Headers["WWW-Authenticate"] = "Bearer";
+            await base.HandleChallengeAsync(properties);
+        }
+
+
+
     }
 }
