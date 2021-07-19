@@ -32,7 +32,7 @@ namespace EdDSAJwtBearer
             // obtener la firma del token
             string signature = GetJWTSignature(header, payloadSerialize, edDSAPrivateKey);
 
-            return $"{header}.{payload}.{signature}";
+            return $"{header}.{payloadSerialize}.{signature}";
         }
 
         public static string CreateToken(
